@@ -1,0 +1,11 @@
+Blog reference:
+https://dille.name/blog/2018/08/19/how-to-reduce-the-build-time-of-a-monolithic-docker-image/
+
+Setup local registry:
+docker run -d -p 5000:5000 registry
+
+Push Dockerfile.base (Layers a,b,c):
+docker image build --tag localhost:5000/base --file Dockerfile.base . #Downloads ubuntu base, apt-gets basics
+docker image push localhost:5000/base
+
+#pick up at Mount existing layers

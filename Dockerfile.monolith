@@ -1,0 +1,35 @@
+##Just using to breakdown monolithic build
+#we'll break this into 3 layers
+#
+FROM ubuntu:bionic
+
+RUN apt-get update \
+ && apt-get -y install \
+        apt-utils \
+        ca-certificates \
+        apt-transport-https \
+        software-properties-common \
+        curl \
+        wget \
+        openjdk-8-jdk-headless
+WORKDIR /tmp
+
+RUN wget https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz \
+ && tar -C /opt -xvzf apache-maven-3.5.3-bin.tar.gz \
+ && ln -s /opt/apache-maven-3.5.3 /opt/maven \
+ && rm -f apache-maven-3.5.3-bin.tar.gz \
+ && update-alternatives --install "/usr/bin/mvn" "mvn" "/opt/maven/bin/mvn" 1 \
+ && update-alternatives --set "mvn" "/opt/maven/bin/mvn"
+
+ENV GOROOT=/opt/go
+RUN wget --quiet https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz \
+ && tar -C /opt -xzf go1.10.3.linux-amd64.tar.gz \
+ && mv /opt/go /opt/go-1.10.3 \
+ && ln -s /opt/go-1.10.3 /opt/go \
+ && update-alternatives --install "/usr/bin/go" "go" "/opt/go/bin/go" 1 \
+ && update-alternatives --set "go" "/opt/go/bin/go" \
+ && update-alternatives --install "/usr/bin/godoc" "godoc" "/opt/go/bin/godoc" 1 \
+ && update-alternatives --set "godoc" "/opt/go/bin/godoc" \
+ && update-alternatives --install "/usr/bin/gofmt" "gofmt" "/opt/go/bin/gofmt" 1 \
+ && update-alternatives --set "gofmt" "/opt/go/bin/gofmt" \
+ && rm go1.10.3.linux-amd64.tar.gz

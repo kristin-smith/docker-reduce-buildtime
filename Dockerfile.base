@@ -1,0 +1,13 @@
+FROM ubuntu:bionic
+
+RUN apt-get update \
+ && apt-get -y install \
+        apt-utils \
+        ca-certificates \
+        apt-transport-https \
+        software-properties-common \
+        curl \
+        wget \
+        openjdk-8-jdk-headless
+WORKDIR /tmp
+
