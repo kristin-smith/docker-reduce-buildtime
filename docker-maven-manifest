@@ -1,74 +1,41 @@
 {
-   "schemaVersion": 1,
-   "name": "maven",
-   "tag": "latest",
-   "architecture": "amd64",
-   "fsLayers": [
+   "schemaVersion": 2,
+   "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+   "config": {
+      "mediaType": "application/vnd.docker.container.image.v1+json",
+      "size": 4818,
+      "digest": "sha256:945e3587da0db40c629c8322fe82ab9e2e9539cfb2ac26f89044f2a974e625b1"
+   },
+   "layers": [
       {
-         "blobSum": "sha256:5221686821b461cad09c8928d6595c2b6aab458611896bb4f5e7aab49cd7b82a"
+         "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+         "size": 26690191,
+         "digest": "sha256:5c939e3a4d1097af8d3292ad3a41d3caa846f6333b91f2dd22b972bc2d19c5b5"
       },
       {
-         "blobSum": "sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4"
+         "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+         "size": 35366,
+         "digest": "sha256:c63719cdbe7ae254b453dba06fb446f583b503f2a2c15becc83f8c5bc7a705e0"
       },
       {
-         "blobSum": "sha256:fb172005ef444f58087397feedce8dc751c34249a2816711e028c7c0353bcabe"
+         "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+         "size": 849,
+         "digest": "sha256:19a861ea6baff71b05cd577478984c3e62cf0177bf74468d0aca551f5fcb891c"
       },
       {
-         "blobSum": "sha256:a3ed95caeb02ffe68cdd9fd84406680ae93d633cb16422d00e8a7c22955b46d4"
+         "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+         "size": 162,
+         "digest": "sha256:651c9d2d6c4f37c56a221259e033e7e2353b698139c2ff950623ca28d64a9837"
       },
       {
-         "blobSum": "sha256:651c9d2d6c4f37c56a221259e033e7e2353b698139c2ff950623ca28d64a9837"
+         "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+         "size": 118582172,
+         "digest": "sha256:0467541d0b0a06aba01de1c96583e6adb9167c8e5883bbda4651a5cb74209a36"
       },
       {
-         "blobSum": "sha256:19a861ea6baff71b05cd577478984c3e62cf0177bf74468d0aca551f5fcb891c"
-      },
-      {
-         "blobSum": "sha256:c63719cdbe7ae254b453dba06fb446f583b503f2a2c15becc83f8c5bc7a705e0"
-      },
-      {
-         "blobSum": "sha256:5c939e3a4d1097af8d3292ad3a41d3caa846f6333b91f2dd22b972bc2d19c5b5"
-      }
-   ],
-   "history": [
-      {
-         "v1Compatibility": "{\"architecture\":\"amd64\",\"config\":{\"Hostname\":\"\",\"Domainname\":\"\",\"User\":\"\",\"AttachStdin\":false,\"AttachStdout\":false,\"AttachStderr\":false,\"Tty\":false,\"OpenStdin\":false,\"StdinOnce\":false,\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"],\"Cmd\":[\"/bin/bash\"],\"ArgsEscaped\":true,\"Image\":\"sha256:be69650af635f7afdb2c88b8e193f5b249b9d025192f6e71ebac2c19624ef963\",\"Volumes\":null,\"WorkingDir\":\"/tmp\",\"Entrypoint\":null,\"OnBuild\":null,\"Labels\":null},\"container\":\"ff70287ae581376c31686cb1bb60943023fdb53311b3bb57b85455e814bb1d3e\",\"container_config\":{\"Hostname\":\"\",\"Domainname\":\"\",\"User\":\"\",\"AttachStdin\":false,\"AttachStdout\":false,\"AttachStderr\":false,\"Tty\":false,\"OpenStdin\":false,\"StdinOnce\":false,\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"],\"Cmd\":[\"/bin/sh\",\"-c\",\"wget https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz  \\u0026\\u0026 tar -C /opt -xvzf apache-maven-3.5.3-bin.tar.gz  \\u0026\\u0026 ln -s /opt/apache-maven-3.5.3 /opt/maven  \\u0026\\u0026 rm -f apache-maven-3.5.3-bin.tar.gz  \\u0026\\u0026 update-alternatives --install \\\"/usr/bin/mvn\\\" \\\"mvn\\\" \\\"/opt/maven/bin/mvn\\\" 1  \\u0026\\u0026 update-alternatives --set \\\"mvn\\\" \\\"/opt/maven/bin/mvn\\\"\"],\"Image\":\"sha256:be69650af635f7afdb2c88b8e193f5b249b9d025192f6e71ebac2c19624ef963\",\"Volumes\":null,\"WorkingDir\":\"/tmp\",\"Entrypoint\":null,\"OnBuild\":null,\"Labels\":null},\"created\":\"2020-01-21T02:24:22.376292563Z\",\"docker_version\":\"19.03.4\",\"id\":\"a3c6b7434d7144f4e2191983552475f720cb89f0683efbb8c90c84e0335cfbfa\",\"os\":\"linux\",\"parent\":\"cb1206c117db2ad496b2ef48f0c25bd9f80e1e3d895d6b44576ca2b1041c8f77\"}"
-      },
-      {
-         "v1Compatibility": "{\"id\":\"cb1206c117db2ad496b2ef48f0c25bd9f80e1e3d895d6b44576ca2b1041c8f77\",\"parent\":\"759c3f992ffd8487a463dfb344139a5d8efb9733a0f089c56eb0b55f9b7d6ea1\",\"created\":\"2020-01-21T02:19:21.322130471Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop) WORKDIR /tmp\"]},\"throwaway\":true}"
-      },
-      {
-         "v1Compatibility": "{\"id\":\"759c3f992ffd8487a463dfb344139a5d8efb9733a0f089c56eb0b55f9b7d6ea1\",\"parent\":\"1b614eb9376b1d048bc64dcb0a650d121a30c615b2ba68313438fb5fade0d98a\",\"created\":\"2020-01-21T02:19:20.341011561Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c apt-get update  \\u0026\\u0026 apt-get -y install         apt-utils         ca-certificates         apt-transport-https         software-properties-common         curl         wget         openjdk-8-jdk-headless\"]}}"
-      },
-      {
-         "v1Compatibility": "{\"id\":\"1b614eb9376b1d048bc64dcb0a650d121a30c615b2ba68313438fb5fade0d98a\",\"parent\":\"4da60bd2f5fdf2828304e0be577c3794523ea111fe1d3086e58cc6aeeae39e42\",\"created\":\"2020-01-16T01:20:34.28326882Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop)  CMD [\\\"/bin/bash\\\"]\"]},\"throwaway\":true}"
-      },
-      {
-         "v1Compatibility": "{\"id\":\"4da60bd2f5fdf2828304e0be577c3794523ea111fe1d3086e58cc6aeeae39e42\",\"parent\":\"ae8f96810dde1a8480ef4c953d0dc45402a6ed0acec645f8844d6600ed9898fe\",\"created\":\"2020-01-16T01:20:34.09120692Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c mkdir -p /run/systemd \\u0026\\u0026 echo 'docker' \\u003e /run/systemd/container\"]}}"
-      },
-      {
-         "v1Compatibility": "{\"id\":\"ae8f96810dde1a8480ef4c953d0dc45402a6ed0acec645f8844d6600ed9898fe\",\"parent\":\"9e85c03ba138af32c4ed405a06a7d1396c3dab63a807db9dc6497238f3a0156d\",\"created\":\"2020-01-16T01:20:33.40768866Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c set -xe \\t\\t\\u0026\\u0026 echo '#!/bin/sh' \\u003e /usr/sbin/policy-rc.d \\t\\u0026\\u0026 echo 'exit 101' \\u003e\\u003e /usr/sbin/policy-rc.d \\t\\u0026\\u0026 chmod +x /usr/sbin/policy-rc.d \\t\\t\\u0026\\u0026 dpkg-divert --local --rename --add /sbin/initctl \\t\\u0026\\u0026 cp -a /usr/sbin/policy-rc.d /sbin/initctl \\t\\u0026\\u0026 sed -i 's/^exit.*/exit 0/' /sbin/initctl \\t\\t\\u0026\\u0026 echo 'force-unsafe-io' \\u003e /etc/dpkg/dpkg.cfg.d/docker-apt-speedup \\t\\t\\u0026\\u0026 echo 'DPkg::Post-Invoke { \\\"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\\\"; };' \\u003e /etc/apt/apt.conf.d/docker-clean \\t\\u0026\\u0026 echo 'APT::Update::Post-Invoke { \\\"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\\\"; };' \\u003e\\u003e /etc/apt/apt.conf.d/docker-clean \\t\\u0026\\u0026 echo 'Dir::Cache::pkgcache \\\"\\\"; Dir::Cache::srcpkgcache \\\"\\\";' \\u003e\\u003e /etc/apt/apt.conf.d/docker-clean \\t\\t\\u0026\\u0026 echo 'Acquire::Languages \\\"none\\\";' \\u003e /etc/apt/apt.conf.d/docker-no-languages \\t\\t\\u0026\\u0026 echo 'Acquire::GzipIndexes \\\"true\\\"; Acquire::CompressionTypes::Order:: \\\"gz\\\";' \\u003e /etc/apt/apt.conf.d/docker-gzip-indexes \\t\\t\\u0026\\u0026 echo 'Apt::AutoRemove::SuggestsImportant \\\"false\\\";' \\u003e /etc/apt/apt.conf.d/docker-autoremove-suggests\"]}}"
-      },
-      {
-         "v1Compatibility": "{\"id\":\"9e85c03ba138af32c4ed405a06a7d1396c3dab63a807db9dc6497238f3a0156d\",\"parent\":\"d9c9f823dc50db7976c0cb8c133cf600e7bd6537a9c6d5ec572881ad02ae7d7c\",\"created\":\"2020-01-16T01:20:32.694672178Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c [ -z \\\"$(apt-get indextargets)\\\" ]\"]}}"
-      },
-      {
-         "v1Compatibility": "{\"id\":\"d9c9f823dc50db7976c0cb8c133cf600e7bd6537a9c6d5ec572881ad02ae7d7c\",\"created\":\"2020-01-16T01:20:31.888175377Z\",\"container_config\":{\"Cmd\":[\"/bin/sh -c #(nop) ADD file:08e718ed0796013f5957a1be7da3bef6225f3d82d8be0a86a7114e5caad50cbc in / \"]}}"
-      }
-   ],
-   "signatures": [
-      {
-         "header": {
-            "jwk": {
-               "crv": "P-256",
-               "kid": "2CGD:EBVU:P7OP:74OH:FRGA:S2SX:ESLF:NIVE:E4AP:B75Y:YNLT:WO5X",
-               "kty": "EC",
-               "x": "L8liStojKbd4kJa2xUp5VwJe7uGCmNDzOdRsPtwM-b4",
-               "y": "I2t_GpoyXs4MLY0_4fj-_kXjaV-B0Jm_HDN74j5F2mY"
-            },
-            "alg": "ES256"
-         },
-         "signature": "Te-CxcaZExbY7EjpspC2B_mTcLOqF32D7FU2XvWA2cn2F2HDhNL3Wls_uka03_Ujx57-gZiKUuuys9aPp9okug",
-         "protected": "eyJmb3JtYXRMZW5ndGgiOjY4MzMsImZvcm1hdFRhaWwiOiJDbjAiLCJ0aW1lIjoiMjAyMC0wMS0yMVQwMjo1MTowNVoifQ"
+         "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+         "size": 8948961,
+         "digest": "sha256:0c4b2b7ef95bd13b5e11ce0fc18aef3462515b2c1d2f068398fb1acb23ac18b1"
       }
    ]
 }

@@ -8,4 +8,14 @@ Push Dockerfile.base (Layers a,b,c):
 docker image build --tag localhost:5000/base --file Dockerfile.base . #Downloads ubuntu base, apt-gets basics
 docker image push localhost:5000/base
 
+#get manifests
+curl -H "Accept: application/vnd.docker.distribution.manifest.v2+json" http://localhost:5000/v2/base/manifests/latest
+
 #pick up at Mount existing layers
+#slightly more complex curl calls (need to specify headers)
+curl -v -d '' http://localhost:5000/v2/base/blobs/uploads/ 
+	returns location header: http://localhost:5000/v2/base/blobs/uploads/055526c8-0150-485d-b579-cdffe1f203e0?_state=0dnkRT2YQ-s5OCvRRgNyZQFkW0YRV7BJpyV1uURINp57Ik5hbWUiOiJiYXNlIiwiVVVJRCI6IjA1NTUyNmM4LTAxNTAtNDg1ZC1iNTc5LWNkZmZlMWYyMDNlMCIsIk9mZnNldCI6MCwiU3RhcnRlZEF0IjoiMjAyMC0wMS0yMVQxNToyNzoyOS45MDU4NTAzNjJaIn0%3D
+
+#image digest is the image ID as revelaed by docker images command
+
+curl -d '' -v -H "Content-Type: application/vnd.docker.container.image.v1+json" http://localhost:5000/v2/base/blobs/uploads/055526c8-0150-485d-b579-cdffe1f203e0?_state=0dnkRT2YQ-s5OCvRRgNyZQFkW0YRV7BJpyV1uURINp57Ik5hbWUiOiJiYXNlIiwiVVVJRCI6IjA1NTUyNmM4LTAxNTAtNDg1ZC1iNTc5LWNkZmZlMWYyMDNlMCIsIk9mZnNldCI6MCwiU3RhcnRlZEF0IjoiMjAyMC0wMS0yMVQxNToyNzoyOS45MDU4NTAzNjJaIn0%3D&digest=a5aefc5d090d

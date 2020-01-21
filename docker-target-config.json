@@ -1,0 +1,114 @@
+{
+  "architecture": "amd64",
+  "config": {
+    "Hostname": "",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    ],
+    "Cmd": [
+      "/bin/bash"
+    ],
+    "ArgsEscaped": true,
+    "Image": "sha256:7c5af167473f5d89c3d30e5a2951331cd200b34178180507a30526b76b167850",
+    "Volumes": null,
+    "WorkingDir": "/tmp",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": null
+  },
+  "container": "1af561c6d57da1d5e5618811bd0579faedc4a2970029f8a310a78fd1a9cb5ac5",
+  "container_config": {
+    "Hostname": "1af561c6d57d",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    ],
+    "Cmd": [
+      "/bin/sh",
+      "-c",
+      "#(nop) WORKDIR /tmp"
+    ],
+    "ArgsEscaped": true,
+    "Image": "sha256:7c5af167473f5d89c3d30e5a2951331cd200b34178180507a30526b76b167850",
+    "Volumes": null,
+    "WorkingDir": "/tmp",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": {}
+  },
+  "created": "2020-01-21T15:12:38.389654792Z",
+  "docker_version": "19.03.5",
+  "history": [
+    {
+      "created": "2020-01-16T01:20:31.888175377Z",
+      "created_by": "/bin/sh -c #(nop) ADD file:08e718ed0796013f5957a1be7da3bef6225f3d82d8be0a86a7114e5caad50cbc in / "
+    },
+    {
+      "created": "2020-01-16T01:20:32.694672178Z",
+      "created_by": "/bin/sh -c [ -z \"$(apt-get indextargets)\" ]"
+    },
+    {
+      "created": "2020-01-16T01:20:33.40768866Z",
+      "created_by": "/bin/sh -c set -xe \t\t&& echo '#!/bin/sh' > /usr/sbin/policy-rc.d \t&& echo 'exit 101' >> /usr/sbin/policy-rc.d \t&& chmod +x /usr/sbin/policy-rc.d \t\t&& dpkg-divert --local --rename --add /sbin/initctl \t&& cp -a /usr/sbin/policy-rc.d /sbin/initctl \t&& sed -i 's/^exit.*/exit 0/' /sbin/initctl \t\t&& echo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup \t\t&& echo 'DPkg::Post-Invoke { \"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\"; };' > /etc/apt/apt.conf.d/docker-clean \t&& echo 'APT::Update::Post-Invoke { \"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\"; };' >> /etc/apt/apt.conf.d/docker-clean \t&& echo 'Dir::Cache::pkgcache \"\"; Dir::Cache::srcpkgcache \"\";' >> /etc/apt/apt.conf.d/docker-clean \t\t&& echo 'Acquire::Languages \"none\";' > /etc/apt/apt.conf.d/docker-no-languages \t\t&& echo 'Acquire::GzipIndexes \"true\"; Acquire::CompressionTypes::Order:: \"gz\";' > /etc/apt/apt.conf.d/docker-gzip-indexes \t\t&& echo 'Apt::AutoRemove::SuggestsImportant \"false\";' > /etc/apt/apt.conf.d/docker-autoremove-suggests"
+    },
+    {
+      "created": "2020-01-16T01:20:34.09120692Z",
+      "created_by": "/bin/sh -c mkdir -p /run/systemd && echo 'docker' > /run/systemd/container"
+    },
+    {
+      "created": "2020-01-16T01:20:34.28326882Z",
+      "created_by": "/bin/sh -c #(nop)  CMD [\"/bin/bash\"]",
+      "empty_layer": true
+    },
+    {
+      "created": "2020-01-21T15:12:37.881991414Z",
+      "created_by": "/bin/sh -c apt-get update  && apt-get -y install         apt-utils         ca-certificates         apt-transport-https         software-properties-common         curl         wget         openjdk-8-jdk-headless"
+    },
+    {
+      "created": "2020-01-21T15:12:38.389654792Z",
+      "created_by": "/bin/sh -c #(nop) WORKDIR /tmp",
+      "empty_layer": true
+    },
+    {
+      "created": "2020-01-21T15:13:27.81403107Z",
+      "created_by": "/bin/sh -c wget https://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz  && tar -C /opt -xvzf apache-maven-3.5.3-bin.tar.gz  && ln -s /opt/apache-maven-3.5.3 /opt/maven  && rm -f apache-maven-3.5.3-bin.tar.gz  && update-alternatives --install \"/usr/bin/mvn\" \"mvn\" \"/opt/maven/bin/mvn\" 1  && update-alternatives --set \"mvn\" \"/opt/maven/bin/mvn\""
+    },
+    {
+      "created": "2020-01-21T15:13:46.974573231Z",
+      "created_by": "/bin/sh -c #(nop)  ENV GOROOT=/opt/go",
+      "empty_layer": true
+    },
+    {
+      "created": "2020-01-21T15:14:06.982052804Z",
+      "created_by": "/bin/sh -c wget --quiet https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz  && tar -C /opt -xzf go1.10.3.linux-amd64.tar.gz  && mv /opt/go /opt/go-1.10.3  && ln -s /opt/go-1.10.3 /opt/go  && update-alternatives --install \"/usr/bin/go\" \"go\" \"/opt/go/bin/go\" 1  && update-alternatives --set \"go\" \"/opt/go/bin/go\"  && update-alternatives --install \"/usr/bin/godoc\" \"godoc\" \"/opt/go/bin/godoc\" 1  && update-alternatives --set \"godoc\" \"/opt/go/bin/godoc\"  && update-alternatives --install \"/usr/bin/gofmt\" \"gofmt\" \"/opt/go/bin/gofmt\" 1  && update-alternatives --set \"gofmt\" \"/opt/go/bin/gofmt\"  && rm go1.10.3.linux-amd64.tar.gz"
+    }
+  ],
+  "os": "linux",
+  "rootfs": {
+    "type": "layers",
+    "diff_ids": [
+      "sha256:43c67172d1d182ca5460fc962f8f053f33028e0a3a1d423e05d91b532429e73d",
+      "sha256:21ec61b65b20ec53a1b7f069fd04df5acb0e75434bd3603c88467c8bfc80d9c6",
+      "sha256:1d0dfb259f6a31f95efcba61f0a3afa318448890610c7d9a64dc4e95f9add843",
+      "sha256:f55aa0bd26b801374773c103bed4479865d0e37435b848cb39d164ccb2c3ba51",
+      "sha256:d5a4f5db1c35aef7dd38cb9e1e4327ec07522078f8b157137494e2ee1cf7b501",
+      "sha256:bde047143a7b0a113e2e927ffc37dfa30bc243a50e398c999103c57fce2d49e1",
+      "sha256:5270180f9111febafbb63b98fdc2cc14aadf6a9aebb13743dfea5b98a29d839f"
+    ]
+  }
+}
