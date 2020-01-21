@@ -8,14 +8,25 @@ Push Dockerfile.base (Layers a,b,c):
 docker image build --tag localhost:5000/base --file Dockerfile.base . #Downloads ubuntu base, apt-gets basics
 docker image push localhost:5000/base
 
-#get manifests
+#get manifests (includes image sha digest)
 curl -H "Accept: application/vnd.docker.distribution.manifest.v2+json" http://localhost:5000/v2/base/manifests/latest
 
-#pick up at Mount existing layers
+#get configuration
+curl -H "Accept: application/vnd.docker.distribution.image.config+json" http://localhost:5000/v2/base/blobs/"sha256:a5aefc5d090d08f4042c9dbed950572859d4adabdacc779b8dc88c37e5d8a61d"
+
+#Add maven and golang-specific steps to the base image configuration
+
+#Mount existing layers (tie layers already pushed in Maven and Golang repositories to the base image. Use double quotes)
+curl -v -d '' "http://localhost:5000/v2/target/blobs/uploads/?mount=sha256:a5aefc5d090d08f4042c9dbed950572859d4adabdacc779b8dc88c37e5d8a61d&from=base"
+
+#upload image configuration and manifests
 #slightly more complex curl calls (need to specify headers)
-curl -v -d '' http://localhost:5000/v2/base/blobs/uploads/ 
-	returns location header: http://localhost:5000/v2/base/blobs/uploads/055526c8-0150-485d-b579-cdffe1f203e0?_state=0dnkRT2YQ-s5OCvRRgNyZQFkW0YRV7BJpyV1uURINp57Ik5hbWUiOiJiYXNlIiwiVVVJRCI6IjA1NTUyNmM4LTAxNTAtNDg1ZC1iNTc5LWNkZmZlMWYyMDNlMCIsIk9mZnNldCI6MCwiU3RhcnRlZEF0IjoiMjAyMC0wMS0yMVQxNToyNzoyOS45MDU4NTAzNjJaIn0%3D
+curl -v -d '' http://localhost:5000/v2/test/blobs/uploads/ 
+	returns location header: http://localhost:5000/v2/target/blobs/uploads/3afb68d4-3172-4072-b7c9-e89cbc35a3c6?_state=ALrr8iRCvIoNhsfgeTdHxyzL5T_yUNJwwwpRPSzBFWh7Ik5hbWUiOiJ0YXJnZXQiLCJVVUlEIjoiM2FmYjY4ZDQtMzE3Mi00MDcyLWI3YzktZTg5Y2JjMzVhM2M2IiwiT2Zmc2V0IjowLCJTdGFydGVkQXQiOiIyMDIwLTAxLTIxVDE3OjQ0OjQwLjQ1Mzc5MDEwOVoifQ%3D%3D
 
-#image digest is the image ID as revelaed by docker images command
+#Upload configuration file (location changes every time  you make a new POST request)
+curl -v -d '@docker-target-config.json' -H "Content-Type: application/vnd.docker.container.image.v1+json" "http://localhost:5000/v2/target/blobs/uploads/bfee4f01-ac63-40bc-adc8-6789fbb83507?_state=XYZ5IOwW2IKXtl8UCnPqwFyOdtzoJxD2jG51bsOUjld7Ik5hbWUiOiJ0YXJnZXQiLCJVVUlEIjoiYmZlZTRmMDEtYWM2My00MGJjLWFkYzgtNjc4OWZiYjgzNTA3IiwiT2Zmc2V0IjowLCJTdGFydGVkQXQiOiIyMDIwLTAxLTIxVDIwOjQwOjE2Ljk3Mzg3NTZaIn0%3D&digest=sha:943849f5bbf4b35874ad4c2a01d9cbbb80a9d640f5158e773f67b75b524b62b6"
 
-curl -d '' -v -H "Content-Type: application/vnd.docker.container.image.v1+json" http://localhost:5000/v2/base/blobs/uploads/055526c8-0150-485d-b579-cdffe1f203e0?_state=0dnkRT2YQ-s5OCvRRgNyZQFkW0YRV7BJpyV1uURINp57Ik5hbWUiOiJiYXNlIiwiVVVJRCI6IjA1NTUyNmM4LTAxNTAtNDg1ZC1iNTc5LWNkZmZlMWYyMDNlMCIsIk9mZnNldCI6MCwiU3RhcnRlZEF0IjoiMjAyMC0wMS0yMVQxNToyNzoyOS45MDU4NTAzNjJaIn0%3D&digest=a5aefc5d090d
+#can't get past this configuration file upload. 
+#Dockerfile.sample is a simple image (just a FROM and WORKDIR command). 
+#Can build, push to registry, pull down config and reupload (config.json). Any editing whatsoever gives the file a new hex and it by definition no longer matches the uploaded values
